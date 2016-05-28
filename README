@@ -5,3 +5,8 @@ Installation
 ./configure
 make
 make install
+make run
+
+
+input = file that contains input information.
+output = list of generated passwords.
