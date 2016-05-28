@@ -10,7 +10,8 @@
 /* Define the vars we will use to test so we can
  * easily change them. 
  */
-#define MAX 1024
+#define INPUT_FILE "input"
+#define OUTPUT_FILE "output"
 
 /* Function that takes two string pointers s and t. The t
  * a:    desc.
