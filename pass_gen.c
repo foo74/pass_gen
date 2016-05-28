@@ -5,6 +5,8 @@
 /* Include our main header file.*/
 #include "pass_gen.h"
 
+void clear_buf(char buf[]);
+
 /* The main function of our program. */
 int main()
 {
@@ -12,14 +14,9 @@ int main()
    char buf2[MAX_LINE];
    FILE *fp_in;
    FILE *fp_out;
-   int i;
 
-   i = 0;
-   for (i=0; i < MAX_LINE; i++)
-   {
-      buf1[i] = 0;
-      buf2[i] = 0;
-   }
+   clear_buf(buf1);
+   clear_buf(buf2);
 
    /* Print the header info. */
    printf("\n---------------------------------------------------------");
@@ -32,25 +29,24 @@ int main()
    fp_in = fopen(INPUT_FILE, "r");
    fp_out = fopen(OUTPUT_FILE, "w");
 
-   i = 0;
-
    /* While we have lines of input, process them. */
    while (fgets(buf1, sizeof(buf1), fp_in))
    {
       printf("processing: %s", buf1);
 
       /* Transform o's to 0's. */
-      ohtozero(buf1, buf2, MAX_LINE);
-      printf("-> %s\n\n", buf2);
+      o_to_0(buf1, buf2, MAX_LINE);
+      printf("-> %s\n", buf2);
       fprintf(fp_out, "%s\n", buf2);
+      clear_buf(buf2);
 
-
-      /* Clear buffers. */
-      for (i=0; i < MAX_LINE; i++)
-      {
-         buf1[i] = 0;
-         buf2[i] = 0;
-      }
+      /* Transform e's to 3's. */
+      e_to_3(buf1, buf2, MAX_LINE);
+      printf("-> %s\n", buf2);
+      fprintf(fp_out, "%s\n", buf2);
+      clear_buf(buf1);
+      clear_buf(buf2);
+      printf("\n");
    }
 
    fclose(fp_in);
@@ -65,7 +61,7 @@ int main()
  */
 
 /* See header pass_gen.h for description. */
-int ohtozero(char in[], char out[], int max)
+int o_to_0(char in[], char out[], int max)
 {
    int i;
    i = 0;
@@ -78,4 +74,32 @@ int ohtozero(char in[], char out[], int max)
          out[i] = in[i];
 
    return 0;
+}
+
+/* See header pass_gen.h for description. */
+int e_to_3(char in[], char out[], int max)
+{
+   int i;
+   i = 0;
+
+   /* Transform e's to 3's. */
+   for (i=0; i < max && in[i] != 0 && in[i] != '\n'; i++)
+      if (in[i] == 'e')
+         out[i] = '3';
+      else
+         out[i] = in[i];
+
+   return 0;
+}
+
+/* Clear buffers. */
+void clear_buf(char buf[])
+{
+   int i;
+   i = 0;
+
+   for (i=0; i < MAX_LINE; i++)
+   {
+      buf[i] = 0;
+   }
 }

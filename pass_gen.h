@@ -19,4 +19,5 @@
  * out:  Contains the output.
  * max:  The maximum buffer size in bytes.
  */
-int ohtozero(char in[], char out[], int max);
+int o_to_0(char in[], char out[], int max);
+int e_to_3(char in[], char out[], int max);
