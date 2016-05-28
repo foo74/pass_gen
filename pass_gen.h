@@ -12,9 +12,11 @@
  */
 #define INPUT_FILE "input"
 #define OUTPUT_FILE "output"
+#define MAX_LINE 1024
 
 /* Function that takes two string pointers s and t. The t
- * a:    desc.
- * b:    desc.
+ * in:   Contains the input.
+ * out:  Contains the output.
+ * max:  The maximum buffer size in bytes.
  */
-void func();
+int ohtozero(char in[], char out[], int max);

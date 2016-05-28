@@ -10,4 +10,4 @@ run:
 	./pass_gen
 
 clean:
-	rm pass_gen pass_gen.o
+	rm pass_gen pass_gen.o output

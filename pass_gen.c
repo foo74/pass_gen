@@ -8,14 +8,18 @@
 /* The main function of our program. */
 int main()
 {
-   char buf[1024];
+   char buf1[MAX_LINE];
+   char buf2[MAX_LINE];
    FILE *fp_in;
    FILE *fp_out;
    int i;
 
    i = 0;
-   for (i=0; i < 1024; i++)
-      buf[i] = 0;
+   for (i=0; i < MAX_LINE; i++)
+   {
+      buf1[i] = 0;
+      buf2[i] = 0;
+   }
 
    /* Print the header info. */
    printf("\n---------------------------------------------------------");
@@ -30,51 +34,48 @@ int main()
 
    i = 0;
 
-/*
-   char a;
-   while ((a = fgetc(fp_in)) != EOF)
-      buf[i++] = a;
-*/
+   /* While we have lines of input, process them. */
+   while (fgets(buf1, sizeof(buf1), fp_in))
+   {
+      printf("processing: %s", buf1);
+
+      /* Transform o's to 0's. */
+      ohtozero(buf1, buf2, MAX_LINE);
+      printf("-> %s\n\n", buf2);
+      fprintf(fp_out, "%s\n", buf2);
 
 
-   /* Read input. */
-   printf("Reading file %s...", INPUT_FILE);
-   fgets(buf, 1024, fp_in);
-   printf("Done.\n");
-
-   /* Write the original. */
-   printf("Writing passwords to file...\n\n");
-
-   printf("%s", buf);
-   for (i=0; i < 1024 && buf[i] != 0; i++)
-      fprintf(fp_out, "%c", buf[i]);
-
-   /* Transofrm o's to 0's. */
-   for (i=0; i < 1024 && buf[i] != 0; i++)
-      if (buf[i] == 'o')
-         buf[i] = '0';
-
-   /* Write the transformed. */
-   printf("%s", buf);
-   for (i=0; i < 1024 && buf[i] != 0; i++)
-      fprintf(fp_out, "%c", buf[i]);
-
-   printf("\n\nDone.\n");
+      /* Clear buffers. */
+      for (i=0; i < MAX_LINE; i++)
+      {
+         buf1[i] = 0;
+         buf2[i] = 0;
+      }
+   }
 
    fclose(fp_in);
    fclose(fp_out);
 
-
    /* Be a good main function and return 0 because all went fine. */
    return 0;
 }
-
 
 /* Our functions are defined below here. We could also put them 
  * in their own files and link them together or #include them.
  */
 
 /* See header pass_gen.h for description. */
-void ohtozero()
+int ohtozero(char in[], char out[], int max)
 {
+   int i;
+   i = 0;
+
+   /* Transform o's to 0's. */
+   for (i=0; i < max && in[i] != 0 && in[i] != '\n'; i++)
+      if (in[i] == 'o')
+         out[i] = '0';
+      else
+         out[i] = in[i];
+
+   return 0;
 }
