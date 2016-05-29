@@ -16,8 +16,10 @@
 
 /* Function that takes two string pointers s and t. The t
  * in:   Contains the input.
- * out:  Contains the output.
  * max:  The maximum buffer size in bytes.
+ * stream: The output file straem.
  */
-int o_to_0(char in[], char out[], int max);
-int e_to_3(char in[], char out[], int max);
+int transform1(char in[], int max, FILE *stream);
+void o_to_0(char in[], char out[], int max);
+void e_to_3(char in[], char out[], int max);
+void add_nums(char in[], int max, FILE *stream);
