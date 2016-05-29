@@ -22,4 +22,5 @@
 int transform1(char in[], int max, FILE *stream);
 void o_to_0(char in[], char out[], int max);
 void e_to_3(char in[], char out[], int max);
+void a_to_at(char in[], char out[], int max);
 void add_nums(char in[], int max, FILE *stream);

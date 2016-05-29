@@ -55,15 +55,35 @@ int transform1(char in[], int max, FILE *stream)
 {
    char buf1[max];
    char buf2[max];
+   char buf3[max];
 
    clear_buf(buf1);
    clear_buf(buf2);
+   clear_buf(buf3);
 
    /* add nums to orig */
    add_nums(in, max, stream);
 
-   /* Transform o_to_0() > e_to_3() */
+   /* Transform o_to_0() */
    o_to_0(in, buf1, max);
+   printf("-> %s", buf1);
+   fprintf(stream, "%s", buf1);
+   add_nums(buf1, max, stream);
+   clear_buf(buf1);
+
+   /* a_to_@ */
+   a_to_at(in, buf1, max);
+   printf("-> %s", buf1);
+   fprintf(stream, "%s", buf1);
+   add_nums(buf1, max, stream);
+   clear_buf(buf1);
+
+   /* Transform o_to_0 > a_to_@() */
+   o_to_0(in, buf1, max);
+   printf("-> %s", buf1);
+   fprintf(stream, "%s", buf1);
+   add_nums(buf1, max, stream);
+   a_to_at(in, buf1, max);
    printf("-> %s", buf1);
    fprintf(stream, "%s", buf1);
    add_nums(buf1, max, stream);
@@ -78,8 +98,17 @@ int transform1(char in[], int max, FILE *stream)
    printf("-> %s", buf2);
    fprintf(stream, "%s", buf2);
    add_nums(buf2, max, stream);
+   a_to_at(buf1, buf2, max);
+   printf("-> %s", buf2);
+   fprintf(stream, "%s", buf2);
+   add_nums(buf2, max, stream);
+   a_to_at(buf2, buf3, max);
+   printf("-> %s", buf3);
+   fprintf(stream, "%s", buf3);
+   add_nums(buf3, max, stream);
    clear_buf(buf1);
    clear_buf(buf2);
+   clear_buf(buf3);
 
    return 0;
 }
@@ -104,6 +133,18 @@ void o_to_0(char in[], char out[], int max)
    for (i=0; i < max && in[i] != 0; i++)
       if (in[i] == 'o')
          out[i] = '0';
+      else
+         out[i] = in[i];
+}
+
+void a_to_at(char in[], char out[], int max)
+{
+   int i;
+   i = 0;
+
+   for (i=0; i < max && in[i] != 0; i++)
+      if (in[i] == 'a')
+         out[i] = '@';
       else
          out[i] = in[i];
 }
