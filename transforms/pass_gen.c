@@ -15,22 +15,21 @@ int main()
    FILE *fp_out;
    FILE *fp_out2;
    FILE *fp_out3;
+   FILE *fp_out4;
 
    clear_buf(buf);
 
-   fp_in = fopen(INPUT_FILE, "r");
+   fp_in = fopen("input", "r");
    fp_out = fopen("pass1", "a+");
    fp_out2 = fopen("pass2", "a+");
    fp_out3 = fopen("pass3", "a+");
+   fp_out4 = fopen("output2", "a+");
 
    /* While we have lines of input, process them. */
    while (fgets(buf, sizeof(buf), fp_in))
    {
-      printf("processing: %s", buf);
-
       /* Transform 1. */
       transform1(buf, MAX_LINE, fp_out);
-      printf("\n");
    }
 
    rewind(fp_out);
@@ -38,10 +37,7 @@ int main()
 
    while (fgets(buf, sizeof(buf), fp_out))
    {
-      printf("processing: %s", buf);
-
       transform2(buf, MAX_LINE, fp_out2);
-      printf("\n");
    }
 
    rewind(fp_out2);
@@ -49,16 +45,24 @@ int main()
 
    while (fgets(buf, sizeof(buf), fp_out2))
    {
-      printf("processing: %s", buf);
-
       transform3(buf, MAX_LINE, fp_out3);
-      printf("\n");
    }
+
+   /* now add 0-9 to end of all passes */
+   rewind(fp_in);
+   add_nums(fp_in, fp_out4);
+   rewind(fp_out);
+   add_nums(fp_out, fp_out4);
+   rewind(fp_out2);
+   add_nums(fp_out2, fp_out4);
+   rewind(fp_out3);
+   add_nums(fp_out3, fp_out4);
 
    fclose(fp_in);
    fclose(fp_out);
    fclose(fp_out2);
    fclose(fp_out3);
+   fclose(fp_out4);
 
    /* Be a good main function and return 0 because all went fine. */
    return 0;
@@ -77,7 +81,6 @@ int transform1(char in[], int max, FILE *stream)
 
    /* Transform o_to_0() */
    o_to_0(in, buf1, max);
-   printf("-> %s", buf1);
    fprintf(stream, "%s", buf1);
    clear_buf(buf1);
 
@@ -92,7 +95,6 @@ int transform2(char in[], int max, FILE *stream)
 
    /* Transform e_to_3() */
    e_to_3(in, buf1, max);
-   printf("-> %s", buf1);
    fprintf(stream, "%s", buf1);
    clear_buf(buf1);
 
@@ -107,7 +109,6 @@ int transform3(char in[], int max, FILE *stream)
 
    /* Transform a_to_at() */
    a_to_at(in, buf1, max);
-   printf("-> %s", buf1);
    fprintf(stream, "%s", buf1);
    clear_buf(buf1);
 
@@ -150,30 +151,34 @@ void a_to_at(char in[], char out[], int max)
          out[i] = in[i];
 }
 
-void add_nums(char in[], int max, FILE *stream)
+void add_nums(FILE *in_stream, FILE *out_stream)
 {
-   char tmp[max];
-   clear_buf(tmp);
-   
+   char line[1024];
    int i;
    int index;
+
+   clear_buf(line);
    i = 0;
    index = 0;
 
-   /*find the end of the line*/
-   while (in[i] != '\n' && i < 1024)
+   while (fgets(line, sizeof(line), in_stream))
    {
-      tmp[i] = in[i];
-      i++;
-   }
+      /*find the end of the line*/
+      while (line[index] != '\n' && i < 1024)
+         index++;
 
-   index = i;
+      /* for add digits 0-9 to the end */
+      for (i=0; i < 10; i++)
+      {
+         line[index] = i+48;
+         line[index+1] = '\n';
+         line[index+2] = 0;
+         fprintf(out_stream, "%s", line);
+      }
 
-   for (i=0; i < 10; i++)
-   {
-      tmp[index] = i+48;
-      printf("-> %s\n", tmp);
-      fprintf(stream, "%s\n", tmp);
+      /* Reset so we are clear when grab next line. */
+      index = 0;
+      clear_buf(line);
    }
 }
 
