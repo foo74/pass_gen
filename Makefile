@@ -1,13 +1,13 @@
 # Makefile for password generator.
 # by foo74
-all: pass_gen
+all: main
 
-pass_gen: pass_gen.c pass_gen.h
-	gcc pass_gen.c -Wall -g -c -o pass_gen.o
-	gcc -o pass_gen pass_gen.o
+pass_gen: main.c
+	gcc main.c -Wall -g -c -o main.o
+	gcc -o main main.o
 
 run:
-	./pass_gen
+	./main
 
 clean:
-	rm pass_gen pass_gen.o output
+	rm main main.o output
