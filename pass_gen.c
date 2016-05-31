@@ -5,7 +5,8 @@ int main(int argc, char *argv[])
    int transform = 0;
    int i = 0;
 
-   char file[] = "blah";
+   char source_file[] = "input";
+   char dest_file[] = "output";
    char a = 'a';
    char b = 'b';
 
@@ -24,10 +25,10 @@ int main(int argc, char *argv[])
 
    if ( transform )
    {
-      replace_char(file, a, b);
+      replace_char(source_file, dest_file, a, b);
    }
 
-   printf("argv[1] = %s\n\n", argv[1]);
+   printf("argv[1] = %s\n", argv[1]);
 
    return 0;
 }

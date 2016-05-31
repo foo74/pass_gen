@@ -20,4 +20,4 @@
  * from_char: The char to replace. 
  * to_char: The new char that replaces the old.
  */
-int replace_char(char file_name[], char from_char, char to_char);
+int replace_char(char input_file[], char output_file[], char from_char, char to_char);

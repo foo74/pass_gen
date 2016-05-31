@@ -12,20 +12,28 @@ void clear_buf(char buf[]);
  */
 
 /* functions */
-int replace_char(char file_name[], char from_char, char to_char)
+int replace_char(char input_file[], char output_file[], char from_char, char to_char)
 {
+   char buf[1024];
 
-   printf("IN THE TRANSFORM FOO!!!\n\n");
-/*
-   FILE *fp_out4;
-   fp_in = fopen("input", "r");
-   rewind(fp_out2);
-   fclose(fp_in);
+   printf("IN THE TRANSFORM FOO!!!\n");
 
-   while (fgets(buf, sizeof(buf), fp_in))
+   FILE *input_stream;
+   FILE *output_stream;
+   input_stream = fopen(input_file, "r");
+   output_stream = fopen(output_file, "a+");
+
+   while (fgets(buf, sizeof(buf), input_stream))
    {
+      printf("buf=%s", buf);
+      fprintf(output_stream, "%s", buf);
    }
 
+   fclose(input_stream);
+   fclose(output_stream);
+
+/*
+   rewind(fp_out2);
    clear_buf(buf);
    add_nums(fp_out5, fp_out4);
 */
