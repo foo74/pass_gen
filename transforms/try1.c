@@ -16,6 +16,7 @@ int main()
    FILE *fp_out2;
    FILE *fp_out3;
    FILE *fp_out4;
+   FILE *fp_out5;
 
    clear_buf(buf);
 
@@ -24,6 +25,7 @@ int main()
    fp_out2 = fopen("pass2", "a+");
    fp_out3 = fopen("pass3", "a+");
    fp_out4 = fopen("output2", "a+");
+   fp_out5 = fopen("pass5", "a+");
 
    /* While we have lines of input, process them. */
    while (fgets(buf, sizeof(buf), fp_in))
@@ -48,6 +50,14 @@ int main()
       transform3(buf, MAX_LINE, fp_out3);
    }
 
+   rewind(fp_out3);
+   clear_buf(buf);
+
+   while (fgets(buf, sizeof(buf), fp_out3))
+   {
+      transform4(buf, MAX_LINE, fp_out5);
+   }
+
    /* now add 0-9 to end of all passes */
    rewind(fp_in);
    add_nums(fp_in, fp_out4);
@@ -57,12 +67,15 @@ int main()
    add_nums(fp_out2, fp_out4);
    rewind(fp_out3);
    add_nums(fp_out3, fp_out4);
+   rewind(fp_out5);
+   add_nums(fp_out5, fp_out4);
 
    fclose(fp_in);
    fclose(fp_out);
    fclose(fp_out2);
    fclose(fp_out3);
    fclose(fp_out4);
+   fclose(fp_out5);
 
    /* Be a good main function and return 0 because all went fine. */
    return 0;
@@ -113,6 +126,32 @@ int transform3(char in[], int max, FILE *stream)
    clear_buf(buf1);
 
    return 0;
+}
+
+int transform4(char in[], int max, FILE *stream)
+{
+   char buf1[max];
+
+   clear_buf(buf1);
+
+   /* Transform a_to_at() */
+   s_to_dol(in, buf1, max);
+   fprintf(stream, "%s", buf1);
+   clear_buf(buf1);
+
+   return 0;
+}
+
+void s_to_dol(char in[], char out[], int max)
+{
+   int i;
+   i = 0;
+
+   for (i=0; i < max && in[i] != 0; i++)
+      if (in[i] == 's')
+         out[i] = '$';
+      else
+         out[i] = in[i];
 }
 
 void e_to_3(char in[], char out[], int max)

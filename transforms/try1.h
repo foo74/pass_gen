@@ -22,7 +22,10 @@
 int transform1(char in[], int max, FILE *stream);
 int transform2(char in[], int max, FILE *stream);
 int transform3(char in[], int max, FILE *stream);
+int transform4(char in[], int max, FILE *stream);
 void o_to_0(char in[], char out[], int max);
 void e_to_3(char in[], char out[], int max);
 void a_to_at(char in[], char out[], int max);
+void s_to_dol(char in[], char out[], int max);
 void add_nums(FILE *in_stream, FILE *out_stream);
+int change_char(FILE *stream, char from_char, char to_char);
