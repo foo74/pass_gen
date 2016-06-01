@@ -1,14 +1,27 @@
 #include "pass_gen.h"
 
+struct char_transform
+{
+   char from;
+   char to;
+};
+
 int main(int argc, char *argv[])
 {
    int transform = 0;
    int i = 0;
+   struct char_transform foo[4];
 
    char source_file[] = "input";
    char dest_file[] = "output";
-   char a = 'a';
-   char b = 'b';
+   foo[0].from = 'o';
+   foo[0].to = '0';
+   foo[1].from = 'a';
+   foo[1].to = '@';
+   foo[2].from = 'e';
+   foo[2].to = '3';
+   foo[3].from = 's';
+   foo[3].to = '$';
 
    if ( argc == 1 || (strstr(argv[1], "-h") != NULL) )
    {
@@ -25,10 +38,20 @@ int main(int argc, char *argv[])
 
    if ( transform )
    {
-      replace_char(source_file, dest_file, a, b);
+      for (i=0; i < 4; i++)
+      {
+         replace_char(source_file, dest_file, foo[i].from, foo[i].to);
+         printf("pass_a: %d\n", i);
+      }
+      for (i=0; i < 4; i++)
+      {
+         replace_char(dest_file, dest_file, foo[i].from, foo[i].to);
+         printf("pass_b: %d\n", i);
+      }
    }
 
    printf("argv[1] = %s\n", argv[1]);
 
    return 0;
 }
+

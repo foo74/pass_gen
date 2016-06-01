@@ -15,17 +15,20 @@ void clear_buf(char buf[]);
 int replace_char(char input_file[], char output_file[], char from_char, char to_char)
 {
    char buf[1024];
-
-   printf("IN THE TRANSFORM FOO!!!\n");
-
+   int i;
    FILE *input_stream;
    FILE *output_stream;
+
+   i = 0;
    input_stream = fopen(input_file, "r");
    output_stream = fopen(output_file, "a+");
 
    while (fgets(buf, sizeof(buf), input_stream))
    {
-      printf("buf=%s", buf);
+      for (i=0; i < 1024 && buf[i] != 0; i++)
+         if (buf[i] == from_char)
+            buf[i] = to_char;
+
       fprintf(output_stream, "%s", buf);
    }
 
