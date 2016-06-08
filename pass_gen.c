@@ -8,9 +8,10 @@ struct char_transform
 
 int main(int argc, char *argv[])
 {
+   const int MAX = 5;
    int transform = 0;
    int i = 0;
-   struct char_transform foo[4];
+   struct char_transform foo[MAX];
 
    char source_file[] = "input";
    char dest_file[] = "output";
@@ -22,6 +23,8 @@ int main(int argc, char *argv[])
    foo[2].to = '3';
    foo[3].from = 's';
    foo[3].to = '$';
+   foo[4].from = 'a';
+   foo[4].to = '4';
 
    if ( argc == 1 || (strstr(argv[1], "-h") != NULL) )
    {
@@ -38,12 +41,12 @@ int main(int argc, char *argv[])
 
    if ( transform )
    {
-      for (i=0; i < 4; i++)
+      for (i=0; i < MAX; i++)
       {
          replace_char(source_file, dest_file, foo[i].from, foo[i].to);
          printf("pass_a: %d\n", i);
       }
-      for (i=0; i < 4; i++)
+      for (i=0; i < MAX; i++)
       {
          replace_char(dest_file, dest_file, foo[i].from, foo[i].to);
          printf("pass_b: %d\n", i);
