@@ -28,7 +28,7 @@ int main(int argc, char *argv[])
 
    if ( argc == 1 || (strstr(argv[1], "-h") != NULL) )
    {
-      printf("\n\nUsage: main -a -i <input file> -o <output file>\n\n");
+      printf("\n\nUsage: pass_gen -a -i <input file> -o <output file>\n\n");
       printf("-a transform a's to @'s.\n\n");
    }  
 
