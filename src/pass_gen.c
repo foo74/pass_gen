@@ -10,6 +10,7 @@ int main(int argc, char *argv[])
 {
    const int MAX = 5;
    int transform = 0;
+   int usage = 0;
    int i = 0;
    struct char_transform foo[MAX];
 
@@ -26,18 +27,20 @@ int main(int argc, char *argv[])
    foo[4].from = 'a';
    foo[4].to = '4';
 
-   if ( argc == 1 || (strstr(argv[1], "-h") != NULL) )
-   {
-      printf("\n\nUsage: pass_gen -a -i <input file> -o <output file>\n\n");
-      printf("-a transform a's to @'s.\n\n");
-   }  
+	if (argc == 1)
+		build_input();
 
    /* process options */
    for (i=1; i<argc; i++)
    {
-      if (strstr(argv[i], "-t") != NULL)
+      if (strstr(argv[i], "-h") != NULL)
+         usage = 1;
+      else if (strstr(argv[i], "-t") != NULL)
          transform = 1;
    }
+
+	if ( usage)
+		print_usage();
 
    if ( transform )
    {
@@ -53,8 +56,11 @@ int main(int argc, char *argv[])
       }
    }
 
-   printf("argv[1] = %s\n", argv[1]);
-
    return 0;
 }
 
+void print_usage()
+{
+	printf("\n\nUsage: pass_gen -a -i <input file> -o <output file>\n\n");
+	printf("-a transform a's to @'s.\n\n");
+}

@@ -1,7 +1,6 @@
-#include "ask.h"
+#include "pass_gen.h"
 
-
-int main()
+int build_input()
 {
    FILE *input_stream;
    FILE *output_stream;
@@ -16,7 +15,8 @@ int main()
       buf_in[strcspn(buf_in, "\n")] = 0;
       printf("%s ", buf_in);
       /* The %100s reads only up to 100 chars plus NULL terminator. */
-      scanf("%100s", buf_out);
+      if (scanf("%100s", buf_out) == EOF)
+			printf("EOF reached!\n");
       fprintf(output_stream, "%s\n", buf_out);
    }
 
