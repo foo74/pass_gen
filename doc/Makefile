@@ -151,17 +151,17 @@ MAKEINFO = ${SHELL} /home/foo/programming/pass_gen/missing makeinfo
 MKDIR_P = /bin/mkdir -p
 OBJEXT = o
 PACKAGE = pass_gen
-PACKAGE_BUGREPORT = foo74@protonmail.ch
+PACKAGE_BUGREPORT = foo@none.com
 PACKAGE_NAME = pass_gen
-PACKAGE_STRING = pass_gen 0.0.1
+PACKAGE_STRING = pass_gen 0.1
 PACKAGE_TARNAME = pass_gen
 PACKAGE_URL = 
-PACKAGE_VERSION = 0.0.1
+PACKAGE_VERSION = 0.1
 PATH_SEPARATOR = :
 SET_MAKE = 
 SHELL = /bin/bash
 STRIP = 
-VERSION = 0.0.1
+VERSION = 0.1
 abs_builddir = /home/foo/programming/pass_gen/doc
 abs_srcdir = /home/foo/programming/pass_gen/doc
 abs_top_builddir = /home/foo/programming/pass_gen
@@ -193,7 +193,7 @@ mandir = ${datarootdir}/man
 mkdir_p = $(MKDIR_P)
 oldincludedir = /usr/include
 pdfdir = ${docdir}
-prefix = /home/foo/zzzz
+prefix = /home/foo/blahoo7
 program_transform_name = s,x,x,
 psdir = ${docdir}
 runstatedir = ${localstatedir}/run
@@ -390,7 +390,7 @@ uninstall-am:
 .PRECIOUS: Makefile
 
 
-# Nothing here yet.
+#nothing here yet
 
 # Tell versions [3.59,3.63) of GNU make to not export all variables.
 # Otherwise a system limit (for SysV at least) may be exceeded.

@@ -22,9 +22,6 @@
 /* Define to 1 if you have the <string.h> header file. */
 #define HAVE_STRING_H 1
 
-/* Define to 1 if you have the `strstr' function. */
-#define HAVE_STRSTR 1
-
 /* Define to 1 if you have the <sys/stat.h> header file. */
 #define HAVE_SYS_STAT_H 1
 
@@ -38,13 +35,13 @@
 #define PACKAGE "pass_gen"
 
 /* Define to the address where bug reports for this package should be sent. */
-#define PACKAGE_BUGREPORT "foo74@protonmail.ch"
+#define PACKAGE_BUGREPORT "foo@none.com"
 
 /* Define to the full name of this package. */
 #define PACKAGE_NAME "pass_gen"
 
 /* Define to the full name and version of this package. */
-#define PACKAGE_STRING "pass_gen 0.0.1"
+#define PACKAGE_STRING "pass_gen 0.1"
 
 /* Define to the one symbol short name of this package. */
 #define PACKAGE_TARNAME "pass_gen"
@@ -53,10 +50,10 @@
 #define PACKAGE_URL ""
 
 /* Define to the version of this package. */
-#define PACKAGE_VERSION "0.0.1"
+#define PACKAGE_VERSION "0.1"
 
 /* Define to 1 if you have the ANSI C header files. */
 #define STDC_HEADERS 1
 
 /* Version number of package */
-#define VERSION "0.0.1"
+#define VERSION "0.1"

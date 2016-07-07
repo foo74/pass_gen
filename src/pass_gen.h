@@ -8,6 +8,7 @@
 #include <stdio.h>
 #include <string.h>
 #include <unistd.h> /* For the getopt() to process args. */
+#include <getopt.h>
 #include "transforms/transforms.h"
 
 /* Define the vars we will use to test so we can

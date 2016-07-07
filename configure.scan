@@ -2,8 +2,7 @@
 # Process this file with autoconf to produce a configure script.
 
 AC_PREREQ([2.69])
-AC_INIT([pass_gen], [0.1], [foo@none.com])
-AM_INIT_AUTOMAKE
+AC_INIT([FULL-PACKAGE-NAME], [VERSION], [BUG-REPORT-ADDRESS])
 AC_CONFIG_SRCDIR([config.h.in])
 AC_CONFIG_HEADERS([config.h])
 
@@ -22,8 +21,8 @@ AC_CHECK_FUNCS([strcspn])
 
 AC_CONFIG_FILES([Makefile
                  data/Makefile
-                 examples/Makefile
                  doc/Makefile
+                 examples/Makefile
                  man/Makefile
                  src/Makefile])
-AC_OUTPUT 
+AC_OUTPUT

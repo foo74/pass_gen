@@ -1,2 +1,2 @@
 AUTOMAKE_OPTIONS=subdir-objects
-SUBDIRS = src
+SUBDIRS = src man doc data examples
