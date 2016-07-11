@@ -83,6 +83,10 @@ int main(int argc, char *argv[])
 	//printf("\n\niflag = %d, ivalue = %s\n", iflag, ivalue);
 	//printf("\n\noflag = %d, ovalue = %s\n", oflag, ovalue);
 
+	if ( oflag )
+	{
+		build_input(ovalue);
+	}
 
    if ( tflag == 1 )
    {
