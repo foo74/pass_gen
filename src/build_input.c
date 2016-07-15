@@ -1,15 +1,16 @@
 #include "pass_gen.h"
 
-int build_input(char output_file[])
+int build_input(char questions_file[], char output_file[])
 {
    FILE *input_stream;
    FILE *output_stream;
    char buf_in[100];
    char buf_out[100];
 
-   input_stream = fopen("/home/foo/woop1/share/pass_gen/questions", "r");
+   input_stream = fopen("../share/pass_gen/questions", "r");
    output_stream = fopen(output_file, "w+");
 
+printf("questions_file = %s\noutput_file = %s\n", questions_file, output_file);
    while (fgets(buf_in, sizeof(buf_in), input_stream))
    {
       buf_in[strcspn(buf_in, "\n")] = 0;

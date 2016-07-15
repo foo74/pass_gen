@@ -1,5 +1,5 @@
 transforms/transforms.o: transforms/transforms.c \
- /usr/include/stdc-predef.h transforms/transforms.h /usr/include/stdio.h \
+ /usr/include/stdc-predef.h transforms/../pass_gen.h /usr/include/stdio.h \
  /usr/include/features.h /usr/include/x86_64-linux-gnu/sys/cdefs.h \
  /usr/include/x86_64-linux-gnu/bits/wordsize.h \
  /usr/include/x86_64-linux-gnu/gnu/stubs.h \
@@ -16,11 +16,14 @@ transforms/transforms.o: transforms/transforms.c \
  /usr/include/x86_64-linux-gnu/bits/string.h \
  /usr/include/x86_64-linux-gnu/bits/string2.h /usr/include/endian.h \
  /usr/include/x86_64-linux-gnu/bits/endian.h \
- /usr/include/x86_64-linux-gnu/bits/string3.h
+ /usr/include/x86_64-linux-gnu/bits/string3.h /usr/include/unistd.h \
+ /usr/include/x86_64-linux-gnu/bits/posix_opt.h \
+ /usr/include/x86_64-linux-gnu/bits/confname.h \
+ /usr/include/x86_64-linux-gnu/bits/unistd.h /usr/include/getopt.h
 
 /usr/include/stdc-predef.h:
 
-transforms/transforms.h:
+transforms/../pass_gen.h:
 
 /usr/include/stdio.h:
 
@@ -67,3 +70,13 @@ transforms/transforms.h:
 /usr/include/x86_64-linux-gnu/bits/endian.h:
 
 /usr/include/x86_64-linux-gnu/bits/string3.h:
+
+/usr/include/unistd.h:
+
+/usr/include/x86_64-linux-gnu/bits/posix_opt.h:
+
+/usr/include/x86_64-linux-gnu/bits/confname.h:
+
+/usr/include/x86_64-linux-gnu/bits/unistd.h:
+
+/usr/include/getopt.h:

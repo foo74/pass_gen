@@ -1,11 +1,5 @@
 #include "pass_gen.h"
 
-struct char_transform
-{
-   char from;
-   char to;
-};
-
 int main(int argc, char *argv[])
 {
 	/* -h flag for help */
@@ -17,29 +11,17 @@ int main(int argc, char *argv[])
 	int iflag = 0;
 	char *ivalue = NULL;
 
+	/* -q flag for questions file */
+	int qflag = 0;
+	char *qvalue = NULL;
+
 	/* -t flag for transform */
 	int tflag = 0;
 
 	int opt = 0;
-   const int MAX = 5;
-   int i = 0;
-   struct char_transform foo[MAX];
-
-   //char source_file[] = "input";
-   //char dest_file[] = "output";
-   foo[0].from = 'o';
-   foo[0].to = '0';
-   foo[1].from = 'a';
-   foo[1].to = '@';
-   foo[2].from = 'e';
-   foo[2].to = '3';
-   foo[3].from = 's';
-   foo[3].to = '$';
-   foo[4].from = 'a';
-   foo[4].to = '4';
 
    /* process options */
-	while ((opt = getopt(argc, argv, "hti:o:")) != -1)
+	while ((opt = getopt(argc, argv, "htioq")) != -1)
 	{
 		switch (opt)
 		{
@@ -52,6 +34,11 @@ int main(int argc, char *argv[])
 			case 'o':
 				oflag = 1;
 				ovalue = optarg;
+				break;
+			/* questions file */
+			case 'q':
+				qflag = 1;
+				qvalue = optarg;
 				break;
 			/* perform transform */
 			case 't':
@@ -68,49 +55,37 @@ int main(int argc, char *argv[])
 		}
 	}
 
-	if (iflag == 0)
-	{
-		print_usage();
-		return -1;
-	}
-	else if (oflag == 0)
-	{
-		print_usage();
-		return -1;
-	}
-	
+	/* Set values based in arguments. */
+	if ( !oflag )
+		ovalue = "myoutput";
 
-	//printf("\n\niflag = %d, ivalue = %s\n", iflag, ivalue);
-	//printf("\n\noflag = %d, ovalue = %s\n", oflag, ovalue);
+	if ( !qflag )
+		qvalue = "../share/pass_gen/questions";
 
-	if ( oflag )
-	{
-		build_input(ovalue);
-	}
+	if ( !iflag )
+		ivalue = "custom_input";
 
-   if ( tflag == 1 )
-   {
-      for (i=0; i < MAX; i++)
-      {
-         replace_char(ivalue, ovalue, foo[i].from, foo[i].to);
-         printf("pass_a: %d\n", i);
-      }
-      for (i=0; i < MAX; i++)
-      {
-         replace_char(ivalue, ovalue, foo[i].from, foo[i].to);
-         printf("pass_b: %d\n", i);
-      }
-   }
+	/* Build an input file of words if not specified. */
+	//build_input(qvalue, ivalue);
 
    return 0;
 }
 
 void print_usage()
 {
-	printf("Usage: pass_gen [options] -i <input file> -o <output file>\n"
+	printf("Usage: pass_gen [options]\n"
 	"Options:\n"
 	" -h		print help\n"
+	" -i		input file\n"
+	" -o		output file\n"
 	" -t		transform input\n"
+	" -q		custom questions file\n\n"
 	"Examples:\n"
+	"To run using default input and output files.\n"
+	"pass_gen -t\n\n"
+	"To run with specifying a custom words list and custom output file.\n"
+	"pass_gen -t -i mywords -o myoutput\n\n"
+	"To run with a custom questions file.\n"
+	"pass_gen -t -q myquestions\n\n"
 	"Project Page: https://github.com/foo74/pass_gen\n");
 }

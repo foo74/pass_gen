@@ -101,7 +101,7 @@ am__installdirs = "$(DESTDIR)$(bindir)"
 PROGRAMS = $(bin_PROGRAMS)
 am__dirstamp = $(am__leading_dot)dirstamp
 am_pass_gen_OBJECTS = pass_gen.$(OBJEXT) \
-	transforms/transforms.$(OBJEXT) ask.$(OBJEXT)
+	transforms/transforms.$(OBJEXT)
 pass_gen_OBJECTS = $(am_pass_gen_OBJECTS)
 pass_gen_LDADD = $(LDADD)
 AM_V_P = $(am__v_P_@AM_V@)
@@ -253,7 +253,7 @@ top_srcdir = @top_srcdir@
 AM_CFLAGS = -Wall -g -std=c99 -O2
 AM_LDFLAGS = 
 AUTOMAKE_OPTIONS = subdir-objects
-pass_gen_SOURCES = pass_gen.c pass_gen.h transforms/transforms.c transforms/transforms.h ask.c
+pass_gen_SOURCES = pass_gen.c pass_gen.h transforms/transforms.c
 all: all-am
 
 .SUFFIXES:
@@ -349,7 +349,6 @@ mostlyclean-compile:
 distclean-compile:
 	-rm -f *.tab.c
 
-@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/ask.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/pass_gen.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@transforms/$(DEPDIR)/transforms.Po@am__quote@
 

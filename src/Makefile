@@ -101,7 +101,7 @@ am__installdirs = "$(DESTDIR)$(bindir)"
 PROGRAMS = $(bin_PROGRAMS)
 am__dirstamp = $(am__leading_dot)dirstamp
 am_pass_gen_OBJECTS = pass_gen.$(OBJEXT) \
-	transforms/transforms.$(OBJEXT) ask.$(OBJEXT)
+	transforms/transforms.$(OBJEXT)
 pass_gen_OBJECTS = $(am_pass_gen_OBJECTS)
 pass_gen_LDADD = $(LDADD)
 AM_V_P = $(am__v_P_$(V))
@@ -236,7 +236,7 @@ mandir = ${datarootdir}/man
 mkdir_p = $(MKDIR_P)
 oldincludedir = /usr/include
 pdfdir = ${docdir}
-prefix = /usr/local
+prefix = /home/foo/wooooo
 program_transform_name = s,x,x,
 psdir = ${docdir}
 runstatedir = ${localstatedir}/run
@@ -253,7 +253,7 @@ top_srcdir = ..
 AM_CFLAGS = -Wall -g -std=c99 -O2
 AM_LDFLAGS = 
 AUTOMAKE_OPTIONS = subdir-objects
-pass_gen_SOURCES = pass_gen.c pass_gen.h transforms/transforms.c transforms/transforms.h ask.c
+pass_gen_SOURCES = pass_gen.c pass_gen.h transforms/transforms.c
 all: all-am
 
 .SUFFIXES:
@@ -349,7 +349,6 @@ mostlyclean-compile:
 distclean-compile:
 	-rm -f *.tab.c
 
-include ./$(DEPDIR)/ask.Po
 include ./$(DEPDIR)/pass_gen.Po
 include transforms/$(DEPDIR)/transforms.Po
 
