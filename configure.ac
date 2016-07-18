@@ -6,6 +6,7 @@ AC_INIT([pass_gen], [0.1], [foo@none.com])
 AM_INIT_AUTOMAKE
 AC_CONFIG_SRCDIR([config.h.in])
 AC_CONFIG_HEADERS([config.h])
+#AC_SUBST([AM_CXXFLAGS], [-Wall -static])
 
 # Checks for programs.
 AC_PROG_CC

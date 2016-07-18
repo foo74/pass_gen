@@ -100,8 +100,10 @@ CONFIG_CLEAN_VPATH_FILES =
 am__installdirs = "$(DESTDIR)$(bindir)"
 PROGRAMS = $(bin_PROGRAMS)
 am__dirstamp = $(am__leading_dot)dirstamp
-am_pass_gen_OBJECTS = pass_gen.$(OBJEXT) \
-	transforms/transforms.$(OBJEXT)
+am_pass_gen_OBJECTS = pass_gen.$(OBJEXT) utils/build_input.$(OBJEXT) \
+	utils/buffer_tools.$(OBJEXT) \
+	transforms/append_numbers.$(OBJEXT) \
+	transforms/replace_chars.$(OBJEXT)
 pass_gen_OBJECTS = $(am_pass_gen_OBJECTS)
 pass_gen_LDADD = $(LDADD)
 AM_V_P = $(am__v_P_$(V))
@@ -186,7 +188,7 @@ INSTALL_DATA = ${INSTALL} -m 644
 INSTALL_PROGRAM = ${INSTALL}
 INSTALL_SCRIPT = ${INSTALL}
 INSTALL_STRIP_PROGRAM = $(install_sh) -c -s
-LDFLAGS = 
+LDFLAGS = -static
 LIBOBJS = 
 LIBS = 
 LTLIBOBJS = 
@@ -236,7 +238,7 @@ mandir = ${datarootdir}/man
 mkdir_p = $(MKDIR_P)
 oldincludedir = /usr/include
 pdfdir = ${docdir}
-prefix = /home/foo/wooooo
+prefix = /usr/local
 program_transform_name = s,x,x,
 psdir = ${docdir}
 runstatedir = ${localstatedir}/run
@@ -253,7 +255,13 @@ top_srcdir = ..
 AM_CFLAGS = -Wall -g -std=c99 -O2
 AM_LDFLAGS = 
 AUTOMAKE_OPTIONS = subdir-objects
-pass_gen_SOURCES = pass_gen.c pass_gen.h transforms/transforms.c
+pass_gen_SOURCES = \
+	pass_gen.c pass_gen.h \
+	utils/build_input.c utils/build_input.h \
+	utils/buffer_tools.c utils/buffer_tools.h \
+	transforms/append_numbers.c transforms/append_numbers.h \
+	transforms/replace_chars.c transforms/replace_chars.h
+
 all: all-am
 
 .SUFFIXES:
@@ -329,13 +337,25 @@ uninstall-binPROGRAMS:
 
 clean-binPROGRAMS:
 	-test -z "$(bin_PROGRAMS)" || rm -f $(bin_PROGRAMS)
+utils/$(am__dirstamp):
+	@$(MKDIR_P) utils
+	@: > utils/$(am__dirstamp)
+utils/$(DEPDIR)/$(am__dirstamp):
+	@$(MKDIR_P) utils/$(DEPDIR)
+	@: > utils/$(DEPDIR)/$(am__dirstamp)
+utils/build_input.$(OBJEXT): utils/$(am__dirstamp) \
+	utils/$(DEPDIR)/$(am__dirstamp)
+utils/buffer_tools.$(OBJEXT): utils/$(am__dirstamp) \
+	utils/$(DEPDIR)/$(am__dirstamp)
 transforms/$(am__dirstamp):
 	@$(MKDIR_P) transforms
 	@: > transforms/$(am__dirstamp)
 transforms/$(DEPDIR)/$(am__dirstamp):
 	@$(MKDIR_P) transforms/$(DEPDIR)
 	@: > transforms/$(DEPDIR)/$(am__dirstamp)
-transforms/transforms.$(OBJEXT): transforms/$(am__dirstamp) \
+transforms/append_numbers.$(OBJEXT): transforms/$(am__dirstamp) \
+	transforms/$(DEPDIR)/$(am__dirstamp)
+transforms/replace_chars.$(OBJEXT): transforms/$(am__dirstamp) \
 	transforms/$(DEPDIR)/$(am__dirstamp)
 
 pass_gen$(EXEEXT): $(pass_gen_OBJECTS) $(pass_gen_DEPENDENCIES) $(EXTRA_pass_gen_DEPENDENCIES) 
@@ -345,12 +365,16 @@ pass_gen$(EXEEXT): $(pass_gen_OBJECTS) $(pass_gen_DEPENDENCIES) $(EXTRA_pass_gen
 mostlyclean-compile:
 	-rm -f *.$(OBJEXT)
 	-rm -f transforms/*.$(OBJEXT)
+	-rm -f utils/*.$(OBJEXT)
 
 distclean-compile:
 	-rm -f *.tab.c
 
 include ./$(DEPDIR)/pass_gen.Po
-include transforms/$(DEPDIR)/transforms.Po
+include transforms/$(DEPDIR)/append_numbers.Po
+include transforms/$(DEPDIR)/replace_chars.Po
+include utils/$(DEPDIR)/buffer_tools.Po
+include utils/$(DEPDIR)/build_input.Po
 
 .c.o:
 	$(AM_V_CC)depbase=`echo $@ | sed 's|[^/]*$$|$(DEPDIR)/&|;s|\.o$$||'`;\
@@ -485,6 +509,8 @@ distclean-generic:
 	-test . = "$(srcdir)" || test -z "$(CONFIG_CLEAN_VPATH_FILES)" || rm -f $(CONFIG_CLEAN_VPATH_FILES)
 	-rm -f transforms/$(DEPDIR)/$(am__dirstamp)
 	-rm -f transforms/$(am__dirstamp)
+	-rm -f utils/$(DEPDIR)/$(am__dirstamp)
+	-rm -f utils/$(am__dirstamp)
 
 maintainer-clean-generic:
 	@echo "This command is intended for maintainers to use"
@@ -494,7 +520,7 @@ clean: clean-am
 clean-am: clean-binPROGRAMS clean-generic mostlyclean-am
 
 distclean: distclean-am
-	-rm -rf ./$(DEPDIR) transforms/$(DEPDIR)
+	-rm -rf ./$(DEPDIR) transforms/$(DEPDIR) utils/$(DEPDIR)
 	-rm -f Makefile
 distclean-am: clean-am distclean-compile distclean-generic \
 	distclean-tags
@@ -540,7 +566,7 @@ install-ps-am:
 installcheck-am:
 
 maintainer-clean: maintainer-clean-am
-	-rm -rf ./$(DEPDIR) transforms/$(DEPDIR)
+	-rm -rf ./$(DEPDIR) transforms/$(DEPDIR) utils/$(DEPDIR)
 	-rm -f Makefile
 maintainer-clean-am: distclean-am maintainer-clean-generic
 
@@ -575,6 +601,7 @@ uninstall-am: uninstall-binPROGRAMS
 	uninstall-binPROGRAMS
 
 .PRECIOUS: Makefile
+
 
 # Location to install below installs in ()/bin or ()/sbin
 

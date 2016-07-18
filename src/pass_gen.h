@@ -4,6 +4,10 @@
  * on a set of input.
  *****************************************************/
 
+/* Header guard so our header isn't included multiple times at compile. */ 
+#ifndef PASS_GEN_H
+#define PASS_GEN_H
+
 /* Include the standard io library.*/
 #include <stdio.h>
 #include <string.h>
@@ -17,9 +21,10 @@
 #define OUTPUT_FILE "output"
 #define MAX_LINE 1024
 
-int replace_chars(char input_file[], char output_file[], char from_char, char to_char);
-int append_numbers(char input_file[], char output_file[]);
-int build_input(char questions_file[], char output_file[]);
-int build_input(char questions_file[], char output_file[]);
-void clear_buf(char buf[]);
-void print_usage();
+//int replace_chars(char input_file[], char output_file[], char from_char, char to_char);
+//int append_numbers(char input_file[], char output_file[]);
+//int build_input(char questions_file[], char output_file[]);
+//void clear_buf(char buf[]);
+
+/* End of header guard. */
+#endif

@@ -4,5 +4,11 @@ AM_LDFLAGS =
 AUTOMAKE_OPTIONS=subdir-objects
 # List the binaries and their sources.
 bin_PROGRAMS = pass_gen
-pass_gen_SOURCES = pass_gen.c pass_gen.h transforms/transforms.c
+pass_gen_SOURCES = \
+	pass_gen.c pass_gen.h \
+	utils/build_input.c utils/build_input.h \
+	utils/buffer_tools.c utils/buffer_tools.h \
+	transforms/append_numbers.c transforms/append_numbers.h \
+	transforms/replace_chars.c transforms/replace_chars.h
+	
 # Location to install below installs in ()/bin or ()/sbin

@@ -1,5 +1,9 @@
 #include "pass_gen.h"
 
+
+/* private print_usage function */
+static void print_usage();
+
 int main(int argc, char *argv[])
 {
 	/* -h flag for help */
@@ -71,7 +75,7 @@ int main(int argc, char *argv[])
    return 0;
 }
 
-void print_usage()
+static void print_usage()
 {
 	printf("Usage: pass_gen [options]\n"
 	"Options:\n"
