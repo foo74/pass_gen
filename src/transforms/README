@@ -1,0 +1,9 @@
+transforms
+
+1. a to @
+2. o to 0 (zero)
+3. s to $
+4. e to 3
+5. append 0-9
+6. append !@#$%^&*()_+=-[]{}\|';":/.,?><`~
+7. concatonate words with symbols _ - = + )(*&^%$#@!

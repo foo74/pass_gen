@@ -12,6 +12,7 @@
  */
 
 /* Public functions for this module. */
+int replace_chars(char input_file[], char output_file[]);
 
 /* End of header guard. */
 #endif

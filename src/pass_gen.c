@@ -70,7 +70,8 @@ int main(int argc, char *argv[])
 		ivalue = "custom_input";
 
 	/* Build an input file of words if not specified. */
-	//build_input(qvalue, ivalue);
+	build_input(qvalue, ivalue);
+	replace_chars(ivalue, ovalue);
 
    return 0;
 }

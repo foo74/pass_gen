@@ -1,19 +1,31 @@
 #include "../pass_gen.h"
 
-struct char_transform
+int replace_chars(char input_file[], char output_file[])
 {
-   char from;
-   char to;
-};
+	char buf[100];
+	FILE *fp_in;
+	FILE *fp_out;
 
-int replace_chars(char input_file[], char output_file[], char from_char, char to_char)
-{
-   const int MAX = 5;
-   int i = 0;
-   struct char_transform foo[MAX];
+
+	clear_buf(buf);
+	printf("\nyo foo\n");
+
+	fp_in = fopen(input_file, "r");
+	fp_out = fopen(output_file, "w+");
+
+	while (fgets(buf, sizeof(buf), fp_in))
+	{
+		printf("processing: %s", buf);
+		fprintf(fp_out, "%s", buf);
+	}
+
+	fclose(fp_in);
+	fclose(fp_out);
+
 
    //char source_file[] = "input";
    //char dest_file[] = "output";
+/*
    foo[0].from = 'o';
    foo[0].to = '0';
    foo[1].from = 'a';
@@ -22,8 +34,7 @@ int replace_chars(char input_file[], char output_file[], char from_char, char to
    foo[2].to = '3';
    foo[3].from = 's';
    foo[3].to = '$';
-   foo[4].from = 'a';
-   foo[4].to = '4';
+*/
 
 /*
    {
