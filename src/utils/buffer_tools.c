@@ -8,8 +8,6 @@
 
 #define MAX_BUFFER 100
 
-void clear_buf(char buf[]);
-
 /* Our functions are defined below here. We could also put them 
  * in their own files and link them together or #include them.
  */

@@ -3,8 +3,8 @@
  *****************************************************/
 
 /* Header guard so our header isn't included multiple times at compile. */ 
-#ifndef PASS_GEN_H
-#define PASS_GEN_H
+#ifndef APPEND_NUMBERS_H
+#define APPEND_NUMMBES_H
 
 /* Include the standard io library headers we need.*/
 

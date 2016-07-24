@@ -8,12 +8,6 @@
 #ifndef PASS_GEN_H
 #define PASS_GEN_H
 
-/* Include the standard io library.*/
-#include <stdio.h>
-#include <string.h>
-#include <unistd.h> /* For the getopt() to process args. */
-#include <getopt.h>
-
 /* Define the vars we will use to test so we can
  * easily change them. 
  */

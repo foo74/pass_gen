@@ -1,4 +1,9 @@
+#include <stdio.h>
+#include <getopt.h>
 #include "pass_gen.h"
+#include "utils/buffer_tools.h"
+#include "utils/build_input.h"
+#include "transforms/replace_chars.h"
 
 
 /* private print_usage function */
@@ -19,13 +24,10 @@ int main(int argc, char *argv[])
 	int qflag = 0;
 	char *qvalue = NULL;
 
-	/* -t flag for transform */
-	int tflag = 0;
-
 	int opt = 0;
 
    /* process options */
-	while ((opt = getopt(argc, argv, "htioq")) != -1)
+	while ((opt = getopt(argc, argv, "hioq")) != -1)
 	{
 		switch (opt)
 		{
@@ -43,10 +45,6 @@ int main(int argc, char *argv[])
 			case 'q':
 				qflag = 1;
 				qvalue = optarg;
-				break;
-			/* perform transform */
-			case 't':
-				tflag = 1;
 				break;
 			/* h flag or error then print usage */
 			case '?':

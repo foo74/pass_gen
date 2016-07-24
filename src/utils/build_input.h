@@ -12,6 +12,7 @@
  */
 
 /* Public functions for this module. */
+int build_input(char questions_file[], char output_file[]);
 
 /* End of header guard. */
 #endif

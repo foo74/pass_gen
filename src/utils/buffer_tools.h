@@ -12,6 +12,7 @@
  */
 
 /* Public functions for this module. */
+void clear_buf(char buf[]);
 
 /* End of header guard. */
 #endif
