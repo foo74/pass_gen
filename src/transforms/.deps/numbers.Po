@@ -1,0 +1,6 @@
+transforms/numbers.o: transforms/numbers.c /usr/include/stdc-predef.h \
+ transforms/numbers.h
+
+/usr/include/stdc-predef.h:
+
+transforms/numbers.h:

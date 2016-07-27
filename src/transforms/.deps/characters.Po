@@ -1,5 +1,6 @@
-pass_gen.o: pass_gen.c /usr/include/stdc-predef.h /usr/include/stdio.h \
- /usr/include/features.h /usr/include/x86_64-linux-gnu/sys/cdefs.h \
+transforms/characters.o: transforms/characters.c \
+ /usr/include/stdc-predef.h /usr/include/stdio.h /usr/include/features.h \
+ /usr/include/x86_64-linux-gnu/sys/cdefs.h \
  /usr/include/x86_64-linux-gnu/bits/wordsize.h \
  /usr/include/x86_64-linux-gnu/gnu/stubs.h \
  /usr/include/x86_64-linux-gnu/gnu/stubs-64.h \
@@ -11,9 +12,8 @@ pass_gen.o: pass_gen.c /usr/include/stdc-predef.h /usr/include/stdio.h \
  /usr/include/x86_64-linux-gnu/bits/stdio_lim.h \
  /usr/include/x86_64-linux-gnu/bits/sys_errlist.h \
  /usr/include/x86_64-linux-gnu/bits/stdio.h \
- /usr/include/x86_64-linux-gnu/bits/stdio2.h /usr/include/getopt.h \
- pass_gen.h utils/buffer_tools.h utils/build_input.h \
- transforms/characters.h
+ /usr/include/x86_64-linux-gnu/bits/stdio2.h transforms/characters.h \
+ transforms/../utils/buffer_tools.h
 
 /usr/include/stdc-predef.h:
 
@@ -51,12 +51,6 @@ pass_gen.o: pass_gen.c /usr/include/stdc-predef.h /usr/include/stdio.h \
 
 /usr/include/x86_64-linux-gnu/bits/stdio2.h:
 
-/usr/include/getopt.h:
-
-pass_gen.h:
-
-utils/buffer_tools.h:
-
-utils/build_input.h:
-
 transforms/characters.h:
+
+transforms/../utils/buffer_tools.h:

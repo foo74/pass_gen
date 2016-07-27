@@ -1,5 +1,5 @@
 #include <stdio.h>
-#include "replace_chars.h"
+#include "characters.h"
 #include "../utils/buffer_tools.h"
 
 int replace_chars(char input_file[], char output_file[])
@@ -9,9 +9,8 @@ int replace_chars(char input_file[], char output_file[])
 	FILE *fp_out;
 	int i = 0;
 
-
+	/* Make sure the buffer is zero'ed out. */
 	clear_buf(buf);
-	printf("\nyo foo\n");
 
 	fp_in = fopen(input_file, "r");
 	fp_out = fopen(output_file, "w+");

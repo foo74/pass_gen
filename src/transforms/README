@@ -1,12 +1,15 @@
 TRANSFORMS
 
-01. a to @
-02. o to 0 (zero)
-03. s to $
-04. e to 3
-05. append 0-9
-06. prepend 0-9
-07. prepend !@#$%^&*()_+=-[]{}\|';":/.,?><`~
-08. prepend !@#$%^&*()_+=-[]{}\|';":/.,?><`~
-09. concatenate words with symbols _ - = + )(*&^%$#@!
-10. concatenate words with numbers 0-9
+01. Characters
+	- a to @
+	- o to 0 (zero)
+	- s to $
+	- e to 3
+02. Numbers
+	- append 0-9
+	- prepend 0-9
+	- concatenate words with numbers 0-9
+03. Symbols
+	- prepend !@#$%^&*()_+=-[]{}\|';":/.,?><`~
+	- prepend !@#$%^&*()_+=-[]{}\|';":/.,?><`~
+	- concatenate words with symbols _ - = + )(*&^%$#@!

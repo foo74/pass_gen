@@ -3,7 +3,7 @@
 #include "pass_gen.h"
 #include "utils/buffer_tools.h"
 #include "utils/build_input.h"
-#include "transforms/replace_chars.h"
+#include "transforms/characters.h"
 
 
 /* private print_usage function */

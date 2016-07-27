@@ -3,8 +3,8 @@
  *****************************************************/
 
 /* Header guard so our header isn't included multiple times at compile. */ 
-#ifndef REPLACE_CHARS_H
-#define REPLACE_CHARS_H
+#ifndef CHARACTERS_H
+#define CHARACTERS_H
 
 /* Include the standard io library headers we need.*/
 

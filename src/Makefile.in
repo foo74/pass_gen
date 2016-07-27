@@ -101,9 +101,8 @@ am__installdirs = "$(DESTDIR)$(bindir)"
 PROGRAMS = $(bin_PROGRAMS)
 am__dirstamp = $(am__leading_dot)dirstamp
 am_pass_gen_OBJECTS = pass_gen.$(OBJEXT) utils/build_input.$(OBJEXT) \
-	utils/buffer_tools.$(OBJEXT) \
-	transforms/append_numbers.$(OBJEXT) \
-	transforms/replace_chars.$(OBJEXT)
+	utils/buffer_tools.$(OBJEXT) transforms/numbers.$(OBJEXT) \
+	transforms/characters.$(OBJEXT)
 pass_gen_OBJECTS = $(am_pass_gen_OBJECTS)
 pass_gen_LDADD = $(LDADD)
 AM_V_P = $(am__v_P_@AM_V@)
@@ -259,8 +258,8 @@ pass_gen_SOURCES = \
 	pass_gen.c pass_gen.h \
 	utils/build_input.c utils/build_input.h \
 	utils/buffer_tools.c utils/buffer_tools.h \
-	transforms/append_numbers.c transforms/append_numbers.h \
-	transforms/replace_chars.c transforms/replace_chars.h
+	transforms/numbers.c transforms/numbers.h \
+	transforms/characters.c transforms/characters.h
 
 all: all-am
 
@@ -353,9 +352,9 @@ transforms/$(am__dirstamp):
 transforms/$(DEPDIR)/$(am__dirstamp):
 	@$(MKDIR_P) transforms/$(DEPDIR)
 	@: > transforms/$(DEPDIR)/$(am__dirstamp)
-transforms/append_numbers.$(OBJEXT): transforms/$(am__dirstamp) \
+transforms/numbers.$(OBJEXT): transforms/$(am__dirstamp) \
 	transforms/$(DEPDIR)/$(am__dirstamp)
-transforms/replace_chars.$(OBJEXT): transforms/$(am__dirstamp) \
+transforms/characters.$(OBJEXT): transforms/$(am__dirstamp) \
 	transforms/$(DEPDIR)/$(am__dirstamp)
 
 pass_gen$(EXEEXT): $(pass_gen_OBJECTS) $(pass_gen_DEPENDENCIES) $(EXTRA_pass_gen_DEPENDENCIES) 
@@ -371,8 +370,8 @@ distclean-compile:
 	-rm -f *.tab.c
 
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/pass_gen.Po@am__quote@
-@AMDEP_TRUE@@am__include@ @am__quote@transforms/$(DEPDIR)/append_numbers.Po@am__quote@
-@AMDEP_TRUE@@am__include@ @am__quote@transforms/$(DEPDIR)/replace_chars.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@transforms/$(DEPDIR)/characters.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@transforms/$(DEPDIR)/numbers.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@utils/$(DEPDIR)/buffer_tools.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@utils/$(DEPDIR)/build_input.Po@am__quote@
 

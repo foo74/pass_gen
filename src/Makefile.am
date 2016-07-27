@@ -8,7 +8,7 @@ pass_gen_SOURCES = \
 	pass_gen.c pass_gen.h \
 	utils/build_input.c utils/build_input.h \
 	utils/buffer_tools.c utils/buffer_tools.h \
-	transforms/append_numbers.c transforms/append_numbers.h \
-	transforms/replace_chars.c transforms/replace_chars.h
+	transforms/numbers.c transforms/numbers.h \
+	transforms/characters.c transforms/characters.h
 	
 # Location to install below installs in ()/bin or ()/sbin
