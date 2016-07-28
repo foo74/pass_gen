@@ -13,3 +13,9 @@ TRANSFORMS
 	- prepend !@#$%^&*()_+=-[]{}\|';":/.,?><`~
 	- prepend !@#$%^&*()_+=-[]{}\|';":/.,?><`~
 	- concatenate words with symbols _ - = + )(*&^%$#@!
+04. Dates
+	- birthday 
+		formats: [1/2/03, 01/02/03, 1/2/2003, 1/2/3] 
+		seperators: [/-_]] 
+		concated: [123, 010203, 01022003]
+		backwards: [321, 030201, 20030201]

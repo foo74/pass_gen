@@ -12,6 +12,7 @@
  */
 
 /* Public functions for this module. */
+int append_numbers(char input_file[], char output_file[]);
 
 /* End of header guard. */
 #endif

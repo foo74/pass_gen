@@ -13,7 +13,7 @@ pass_gen.o: pass_gen.c /usr/include/stdc-predef.h /usr/include/stdio.h \
  /usr/include/x86_64-linux-gnu/bits/stdio.h \
  /usr/include/x86_64-linux-gnu/bits/stdio2.h /usr/include/getopt.h \
  pass_gen.h utils/buffer_tools.h utils/build_input.h \
- transforms/characters.h
+ transforms/characters.h transforms/numbers.h
 
 /usr/include/stdc-predef.h:
 
@@ -60,3 +60,5 @@ utils/buffer_tools.h:
 utils/build_input.h:
 
 transforms/characters.h:
+
+transforms/numbers.h:

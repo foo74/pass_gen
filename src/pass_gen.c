@@ -4,6 +4,7 @@
 #include "utils/buffer_tools.h"
 #include "utils/build_input.h"
 #include "transforms/characters.h"
+#include "transforms/numbers.h"
 
 
 /* private print_usage function */
@@ -70,6 +71,7 @@ int main(int argc, char *argv[])
 	/* Build an input file of words if not specified. */
 	build_input(qvalue, ivalue);
 	replace_chars(ivalue, ovalue);
+	append_numbers(ovalue, "output_numbers");
 
    return 0;
 }
