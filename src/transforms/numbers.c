@@ -70,12 +70,15 @@ int concat_with_numbers(char input_file[], char output_file[])
 	FILE *fp_in;
 	FILE *fp_out;
 	int i = 0;
-	//int j = 0;
+	int j = 0;
 	int last = 0;
 	int index = 0;
 
 	/* Make sure the buffer is zero'ed out. */
 	clear_buf(buf);
+
+	for (i=0; i<1000; i++)
+		words[i][0] = 0;
 
 	fp_in = fopen(input_file, "r");
 	fp_out = fopen(output_file, "w+");
@@ -83,7 +86,7 @@ int concat_with_numbers(char input_file[], char output_file[])
 	/* Add all the words to the array, words. */
 	while (fgets(buf, sizeof(buf), fp_in))
 	{
-		printf("\nadding word to array: %s\n", buf);
+		//printf("\nadding word to array: %s\n", buf);
 		//memset(words[index], '\0', sizeof(buf));
 		strcpy(words[index], buf);
 		index++;
@@ -108,28 +111,33 @@ int concat_with_numbers(char input_file[], char output_file[])
       clear_buf(buf);
 	}
 
-	for (i=0; i<10; i++)
-		printf("words[i]: %s\n", words[i]);
+	//for (i=0; words[i][0] != 0 && i < 1000; i++)
+		//printf("words[%d]: %s\n", i, words[i]);
+
+/*
 	strcpy(combined, words[0]);
 	last = strlen(combined);
 	combined[last-1] = '-';
 	strcat(combined, words[1]);
-	printf("\n\ncombined: %s\n\n", combined);
+*/
+
+	//printf("\n\ncombined: %s\n\n", combined);
 
 	/* Now concat all the words together. */
-/*
-	for (i=0; words[i] != 0 && i < 100; i++)
-		for (j=i; words[j] != 0 && j < 100; j++)
+	for (i=0; words[i][0] != 0 && i < 1000; i++)
+	{
+		for (j=0; words[j][0] != 0 && j < 1000; j++)
 		{
-			printf("words[i]: %s, words[j]: %s", words[i], words[j]);
-			strcat(combined, words[i]);
+			strcpy(combined, words[i]);
+			last = strlen(combined);
+			combined[last-1] = '-';
 			strcat(combined, words[j]);
-			printf("combined: %s\n", combined);
 			fprintf(fp_out, "%s", combined);
 
 			clear_buf(combined);
 		}
-*/
+		clear_buf(combined);
+	}
 
 	fclose(fp_in);
 	fclose(fp_out);
