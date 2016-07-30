@@ -9,7 +9,7 @@ int build_input(char questions_file[], char output_file[])
    char buf_in[100];
    char buf_out[100];
 
-   input_stream = fopen("../share/pass_gen/questions", "r");
+   input_stream = fopen(questions_file, "r");
    output_stream = fopen(output_file, "w+");
 
 printf("questions_file = %s\noutput_file = %s\n", questions_file, output_file);

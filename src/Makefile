@@ -101,8 +101,8 @@ am__installdirs = "$(DESTDIR)$(bindir)"
 PROGRAMS = $(bin_PROGRAMS)
 am__dirstamp = $(am__leading_dot)dirstamp
 am_pass_gen_OBJECTS = pass_gen.$(OBJEXT) utils/build_input.$(OBJEXT) \
-	utils/buffer_tools.$(OBJEXT) transforms/numbers.$(OBJEXT) \
-	transforms/characters.$(OBJEXT)
+	utils/buffer_tools.$(OBJEXT) utils/file_tools.$(OBJEXT) \
+	transforms/numbers.$(OBJEXT) transforms/characters.$(OBJEXT)
 pass_gen_OBJECTS = $(am_pass_gen_OBJECTS)
 pass_gen_LDADD = $(LDADD)
 AM_V_P = $(am__v_P_$(V))
@@ -258,6 +258,7 @@ pass_gen_SOURCES = \
 	pass_gen.c pass_gen.h \
 	utils/build_input.c utils/build_input.h \
 	utils/buffer_tools.c utils/buffer_tools.h \
+	utils/file_tools.c utils/file_tools.h \
 	transforms/numbers.c transforms/numbers.h \
 	transforms/characters.c transforms/characters.h
 
@@ -346,6 +347,8 @@ utils/build_input.$(OBJEXT): utils/$(am__dirstamp) \
 	utils/$(DEPDIR)/$(am__dirstamp)
 utils/buffer_tools.$(OBJEXT): utils/$(am__dirstamp) \
 	utils/$(DEPDIR)/$(am__dirstamp)
+utils/file_tools.$(OBJEXT): utils/$(am__dirstamp) \
+	utils/$(DEPDIR)/$(am__dirstamp)
 transforms/$(am__dirstamp):
 	@$(MKDIR_P) transforms
 	@: > transforms/$(am__dirstamp)
@@ -374,6 +377,7 @@ include transforms/$(DEPDIR)/characters.Po
 include transforms/$(DEPDIR)/numbers.Po
 include utils/$(DEPDIR)/buffer_tools.Po
 include utils/$(DEPDIR)/build_input.Po
+include utils/$(DEPDIR)/file_tools.Po
 
 .c.o:
 	$(AM_V_CC)depbase=`echo $@ | sed 's|[^/]*$$|$(DEPDIR)/&|;s|\.o$$||'`;\

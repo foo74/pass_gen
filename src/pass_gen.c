@@ -3,6 +3,7 @@
 #include "pass_gen.h"
 #include "utils/buffer_tools.h"
 #include "utils/build_input.h"
+#include "utils/file_tools.h"
 #include "transforms/characters.h"
 #include "transforms/numbers.h"
 
@@ -28,7 +29,7 @@ int main(int argc, char *argv[])
 	int opt = 0;
 
    /* process options */
-	while ((opt = getopt(argc, argv, "hioq")) != -1)
+	while ((opt = getopt(argc, argv, "hioq:")) != -1)
 	{
 		switch (opt)
 		{
@@ -46,6 +47,7 @@ int main(int argc, char *argv[])
 			case 'q':
 				qflag = 1;
 				qvalue = optarg;
+				printf("\nqvalue is: %s\n", qvalue);
 				break;
 			/* h flag or error then print usage */
 			case '?':
@@ -63,7 +65,15 @@ int main(int argc, char *argv[])
 		ovalue = "myoutput";
 
 	if ( !qflag )
+	{
 		qvalue = "../share/pass_gen/questions";
+		if (!file_exists(qvalue))
+		{
+			printf("\nDefault questions file: %s\n", qvalue);
+			printf("\nFile not found! Try using -q flag.\n\n");
+			return -1;
+		}
+	}
 
 	if ( !iflag )
 		ivalue = "custom_input";

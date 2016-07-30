@@ -3,8 +3,8 @@
  *****************************************************/
 
 /* Header guard so our header isn't included multiple times at compile. */ 
-#ifndef NUMBERS_H
-#define NUMMBES_H
+#ifndef FILE_TOOLS_H
+#define FILE_TOOLS_H
 
 /* Include the standard io library headers we need.*/
 
@@ -12,8 +12,8 @@
  */
 
 /* Public functions for this module. */
-int append_numbers(char input_file[], char output_file[]);
-int concat_with_numbers(char input_file[], char output_file[]);
+/* returns 1 if file exists, 0 if not, and -1 if error */
+int file_exists(char file_to_check[]);
 
 /* End of header guard. */
 #endif

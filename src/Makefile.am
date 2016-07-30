@@ -8,6 +8,7 @@ pass_gen_SOURCES = \
 	pass_gen.c pass_gen.h \
 	utils/build_input.c utils/build_input.h \
 	utils/buffer_tools.c utils/buffer_tools.h \
+	utils/file_tools.c utils/file_tools.h \
 	transforms/numbers.c transforms/numbers.h \
 	transforms/characters.c transforms/characters.h
 	

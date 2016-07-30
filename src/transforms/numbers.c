@@ -56,3 +56,8 @@ int append_numbers(char input_file[], char output_file[])
 
 	return 0;
 }
+
+int concat_with_numbers(char input_file[], char output_file[])
+{
+	return 0;
+}
