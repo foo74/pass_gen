@@ -82,6 +82,7 @@ int main(int argc, char *argv[])
 	build_input(qvalue, ivalue);
 	replace_chars(ivalue, ovalue);
 	append_numbers(ovalue, "output_numbers");
+	concat_with_numbers(ovalue, "output_concat");
 
    return 0;
 }
