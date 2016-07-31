@@ -30,7 +30,7 @@ int append_numbers(char input_file[], char output_file[])
 	while (fgets(buf, sizeof(buf), fp_in))
 	{
 		/* print the original word */
-		printf("processing: %s", buf);
+		//printf("processing: %s", buf);
 
 		/* find the end of the line */
       while (buf[index] != '\n' && index < 100)
@@ -44,7 +44,7 @@ int append_numbers(char input_file[], char output_file[])
          buf[index+2] = 0;
 
 			fprintf(fp_out, "%s", buf);
-			printf("done: %s\n", buf);
+			//printf("done: %s\n", buf);
       }
 
       /* Reset so we are clear when grab next line. */
@@ -71,6 +71,7 @@ int concat_with_numbers(char input_file[], char output_file[])
 	FILE *fp_out;
 	int i = 0;
 	int j = 0;
+	int k = 0;
 	int last = 0;
 	int index = 0;
 
@@ -86,53 +87,26 @@ int concat_with_numbers(char input_file[], char output_file[])
 	/* Add all the words to the array, words. */
 	while (fgets(buf, sizeof(buf), fp_in))
 	{
-		//printf("\nadding word to array: %s\n", buf);
-		//memset(words[index], '\0', sizeof(buf));
 		strcpy(words[index], buf);
 		index++;
 
-		/* find the end of the line */
-      //while (buf[index] != '\n' && index < 100)
-         //index++;
-
-      /* add digits 0-9 to the end */
-/*
-      for (i=0; i < 10; i++)
-      {
-         buf[index] = i+48;
-         buf[index+1] = '\n';
-         buf[index+2] = 0;
-
-			fprintf(fp_out, "%s", buf);
-			printf("done: %s\n", buf);
-      }
-*/
       /* Reset so we are clear when grab next line. */
       clear_buf(buf);
 	}
-
-	//for (i=0; words[i][0] != 0 && i < 1000; i++)
-		//printf("words[%d]: %s\n", i, words[i]);
-
-/*
-	strcpy(combined, words[0]);
-	last = strlen(combined);
-	combined[last-1] = '-';
-	strcat(combined, words[1]);
-*/
-
-	//printf("\n\ncombined: %s\n\n", combined);
 
 	/* Now concat all the words together. */
 	for (i=0; words[i][0] != 0 && i < 1000; i++)
 	{
 		for (j=0; words[j][0] != 0 && j < 1000; j++)
 		{
-			strcpy(combined, words[i]);
-			last = strlen(combined);
-			combined[last-1] = '-';
-			strcat(combined, words[j]);
-			fprintf(fp_out, "%s", combined);
+			for (k=0; k<10; k++)
+			{
+				strcpy(combined, words[i]);
+				last = strlen(combined);
+				combined[last-1] = k+48;
+				strcat(combined, words[j]);
+				fprintf(fp_out, "%s", combined);
+			}
 
 			clear_buf(combined);
 		}

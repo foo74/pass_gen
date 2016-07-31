@@ -12,11 +12,12 @@ int build_input(char questions_file[], char output_file[])
    input_stream = fopen(questions_file, "r");
    output_stream = fopen(output_file, "w+");
 
-printf("questions_file = %s\noutput_file = %s\n", questions_file, output_file);
+//printf("questions_file = %s\noutput_file = %s\n", questions_file, output_file);
    while (fgets(buf_in, sizeof(buf_in), input_stream))
    {
       buf_in[strcspn(buf_in, "\n")] = 0;
       printf("%s ", buf_in);
+
       /* The %100s reads only up to 100 chars plus NULL terminator. */
       if (scanf("%100s", buf_out) == EOF)
 			printf("EOF reached!\n");

@@ -47,7 +47,7 @@ int main(int argc, char *argv[])
 			case 'q':
 				qflag = 1;
 				qvalue = optarg;
-				printf("\nqvalue is: %s\n", qvalue);
+				//printf("\nqvalue is: %s\n", qvalue);
 				break;
 			/* h flag or error then print usage */
 			case '?':
