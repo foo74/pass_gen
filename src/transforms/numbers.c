@@ -12,7 +12,7 @@
  * in their own files and link them together or #include them.
  */
 
-/* functions */
+/* Prepend each word with numbers 0-9. */
 int append_numbers(char input_file[], char output_file[])
 {
 	char buf[100];
@@ -45,6 +45,55 @@ int append_numbers(char input_file[], char output_file[])
 
 			fprintf(fp_out, "%s", buf);
 			//printf("done: %s\n", buf);
+      }
+
+      /* Reset so we are clear when grab next line. */
+		index =0;
+      clear_buf(buf);
+	}
+
+	fclose(fp_in);
+	fclose(fp_out);
+
+	return 0;
+}
+
+/* Prepend each word with numbers 0-9. */
+int prepend_numbers(char input_file[], char output_file[])
+{
+	char buf[100];
+	FILE *fp_in;
+	FILE *fp_out;
+	int i = 0;
+	int index = 0;
+
+	/* Make sure the buffer is zero'ed out. */
+	clear_buf(buf);
+
+	fp_in = fopen(input_file, "r");
+	fp_out = fopen(output_file, "w+");
+
+	while (fgets(buf, sizeof(buf), fp_in))
+	{
+		/* Find the end of the buffer. */
+      while (buf[index] != '\n' && index < 100)
+         index++;
+
+		/* Shift forward to make room at the front of the line for the prepend. */
+		while (index > 0)
+		{
+			buf[index+1] = buf[index];
+			index--;
+		}
+
+		buf[index+1] = buf[index];
+
+      /* add digits 0-9 to the end */
+      for (i=0; i < 10; i++)
+      {
+         buf[index] = i+48;
+
+			fprintf(fp_out, "%s", buf);
       }
 
       /* Reset so we are clear when grab next line. */

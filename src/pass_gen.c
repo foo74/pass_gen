@@ -29,8 +29,7 @@ int main(int argc, char *argv[])
 	int opt = 0;
 
    /* process options */
-	while ((opt = getopt(argc, argv, "hioq:")) != -1)
-	{
+	while ((opt = getopt(argc, argv, "hioq:")) != -1) {
 		switch (opt)
 		{
 			/* input file */
@@ -82,6 +81,7 @@ int main(int argc, char *argv[])
 	build_input(qvalue, ivalue);
 	replace_chars(ivalue, ovalue);
 	append_numbers(ovalue, "output_numbers");
+	prepend_numbers(ovalue, "output_numbers2");
 	concat_with_numbers(ivalue, "output_concat");
 
    return 0;
