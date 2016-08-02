@@ -7,6 +7,7 @@
 #include "utils/file_tools.h"
 #include "transforms/characters.h"
 #include "transforms/numbers.h"
+#include "transforms/symbols.h"
 
 
 /* private print_usage function */
@@ -80,9 +81,12 @@ int main(int argc, char *argv[])
 	/* Build an input file of words if not specified. */
 	build_input(qvalue, ivalue);
 	replace_chars(ivalue, ovalue);
-	append_numbers(ovalue, "output_numbers");
+	append_numbers(ovalue, "output_numbers1");
 	prepend_numbers(ovalue, "output_numbers2");
-	concat_with_numbers(ivalue, "output_concat");
+	concat_with_numbers(ivalue, "output_numbers3");
+	//append_symbols(ovalue, "output_symbols1");
+	//prepend_symbols(ovalue, "output_symbols2");
+	//concat_with_symbols(ivalue, "output_symbols3");
 
    return 0;
 }
