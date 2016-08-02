@@ -6,8 +6,8 @@ int build_input(char questions_file[], char output_file[])
 {
    FILE *input_stream;
    FILE *output_stream;
-   char buf_in[100];
-   char buf_out[100];
+   char buf_in[BUFSIZ];
+   char buf_out[BUFSIZ];
 
    input_stream = fopen(questions_file, "r");
    output_stream = fopen(output_file, "w+");
@@ -18,8 +18,9 @@ int build_input(char questions_file[], char output_file[])
       buf_in[strcspn(buf_in, "\n")] = 0;
       printf("%s ", buf_in);
 
-      /* The %100s reads only up to 100 chars plus NULL terminator. */
-      if (scanf("%100s", buf_out) == EOF)
+      /* The %256s reads only up to 100 chars plus NULL terminator. */
+      //if (scanf("%256s", buf_out) == EOF)
+      if (scanf("%s", buf_out) == EOF)
 			printf("EOF reached!\n");
       fprintf(output_stream, "%s\n", buf_out);
    }

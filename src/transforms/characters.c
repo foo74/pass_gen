@@ -4,7 +4,7 @@
 
 int replace_chars(char input_file[], char output_file[])
 {
-	char buf[100];
+	char buf[BUFSIZ];
 	FILE *fp_in;
 	FILE *fp_out;
 	int i = 0;
@@ -17,11 +17,9 @@ int replace_chars(char input_file[], char output_file[])
 
 	while (fgets(buf, sizeof(buf), fp_in))
 	{
-		/* print the original word */
-		//printf("processing: %s", buf);
 		fprintf(fp_out, "%s", buf);
 
-		for (i=0; i<100 && buf[i] != 0; i++)
+		for (i=0; i<BUFSIZ && buf[i] != 0; i++)
 		{
 			switch (buf[i])
 			{
@@ -44,12 +42,10 @@ int replace_chars(char input_file[], char output_file[])
 			}
 			
 		}
-		//printf("done: %s\n", buf);
 	}
 
 	fclose(fp_in);
 	fclose(fp_out);
-
 
 	return 0;
 }

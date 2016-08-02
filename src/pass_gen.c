@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <stdlib.h>
 #include <getopt.h>
 #include "pass_gen.h"
 #include "utils/buffer_tools.h"
@@ -23,8 +24,7 @@ int main(int argc, char *argv[])
 	char *ivalue = NULL;
 
 	/* -q flag for questions file */
-	int qflag = 0;
-	char *qvalue = NULL;
+	int qflag = 0; char *qvalue = NULL;
 
 	int opt = 0;
 
