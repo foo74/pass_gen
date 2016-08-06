@@ -33,10 +33,40 @@ int append_symbols(char input_file[], char output_file[])
       while (buf[index] != '\n' && index < BUFSIZ)
          index++;
 
-      /* add digits 0-9 to the end */
-      for (i=0; i < 10; i++)
+      /* add symbols --- asci 32-47 --->(space)!"#$%&'()*+,/ */
+      for (i=32; i < 48; i++)
       {
-         buf[index] = i +66;
+         buf[index] = i;
+         buf[index+1] = '\n';
+         buf[index+2] = 0;
+
+			fprintf(fp_out, "%s", buf);
+      }
+
+      /* add symbols --- asci 58-64 ---> :;<=>?@ */
+      for (i=58; i < 65; i++)
+      {
+         buf[index] = i;
+         buf[index+1] = '\n';
+         buf[index+2] = 0;
+
+			fprintf(fp_out, "%s", buf);
+      }
+
+      /* add symbols --- asci 91-96 ---> [\]^_` */
+      for (i=91; i < 97; i++)
+      {
+         buf[index] = i;
+         buf[index+1] = '\n';
+         buf[index+2] = 0;
+
+			fprintf(fp_out, "%s", buf);
+      }
+
+      /* add symbols --- asci 123-126 ---> {|}~ */
+      for (i=123; i < 127; i++)
+      {
+         buf[index] = i;
          buf[index+1] = '\n';
          buf[index+2] = 0;
 

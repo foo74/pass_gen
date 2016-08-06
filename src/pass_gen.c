@@ -84,7 +84,7 @@ int main(int argc, char *argv[])
 	append_numbers(ovalue, "output_numbers1");
 	prepend_numbers(ovalue, "output_numbers2");
 	concat_with_numbers(ivalue, "output_numbers3");
-	//append_symbols(ivalue, "output_symbols1");
+	append_symbols(ivalue, "output_symbols1");
 	//prepend_symbols(ovalue, "output_symbols2");
 	//concat_with_symbols(ivalue, "output_symbols3");
 
