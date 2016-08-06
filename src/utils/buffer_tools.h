@@ -13,6 +13,7 @@
 
 /* Public functions for this module. */
 void clear_buf(char buf[]);
+void clear_buf_t(char buf[], int size);
 
 /* End of header guard. */
 #endif

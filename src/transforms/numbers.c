@@ -110,7 +110,7 @@ int concat_with_numbers(char input_file[], char output_file[])
 	char combined[BUFSIZ];
 
 	// an array of char pointers, max 100. 
-	char words[BUFSIZ][BUFSIZ];
+	char words[100][100];
 
 	FILE *fp_in;
 	FILE *fp_out;
@@ -123,7 +123,7 @@ int concat_with_numbers(char input_file[], char output_file[])
 	/* Make sure the buffer is zero'ed out. */
 	clear_buf(buf);
 
-	for (i=0; i<BUFSIZ; i++)
+	for (i=0; i<100; i++)
 		words[i][0] = 0;
 
 	fp_in = fopen(input_file, "r");
@@ -140,9 +140,9 @@ int concat_with_numbers(char input_file[], char output_file[])
 	}
 
 	/* Now concat all the words together. */
-	for (i=0; words[i][0] != 0 && i < BUFSIZ; i++)
+	for (i=0; words[i][0] != 0 && i < 100; i++)
 	{
-		for (j=0; words[j][0] != 0 && j < BUFSIZ; j++)
+		for (j=0; words[j][0] != 0 && j < 100; j++)
 		{
 			for (k=0; k<10; k++)
 			{

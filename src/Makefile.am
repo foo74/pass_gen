@@ -10,6 +10,7 @@ pass_gen_SOURCES = \
 	utils/buffer_tools.c utils/buffer_tools.h \
 	utils/file_tools.c utils/file_tools.h \
 	transforms/numbers.c transforms/numbers.h \
-	transforms/characters.c transforms/characters.h
+	transforms/characters.c transforms/characters.h \
+	transforms/symbols.c transforms/symbols.h
 	
 # Location to install below installs in ()/bin or ()/sbin

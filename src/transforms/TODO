@@ -1,0 +1,6 @@
+- need to add characters transform to handle caps too.
+- need to add the following ascii to symbols transform.
+-- ascii
+--- 32-47, 58-64, 91-96, 123-126
+
+- Zip the output files using bzip2

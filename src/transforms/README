@@ -7,7 +7,11 @@ TRANSFORMS
 	- e to 3
 02. Numbers
 	- append 0-9
+	- append 0-9 ascending, 01 012 0123, etc.
+	- append 0-9 descending, 98, 987, 9876,  etc.
 	- prepend 0-9
+	- prepend 0-9 ascending, 01 012 0123, etc.
+	- prepend 0-9 descending, 98, 987, 9876,  etc.
 	- concatenate words with numbers 0-9
 03. Symbols
 	- prepend !@#$%^&*()_+=-[]{}\|';":/.,?><`~

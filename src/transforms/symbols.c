@@ -1,9 +1,9 @@
 /****************************************************
- * Read header, numbers.h, for details.
+ * Read header, symbols.h, for details.
  ****************************************************/
 
 /* Include our main header file.*/
-#include "numbers.h"
+#include "symbols.h"
 #include "../utils/buffer_tools.h"
 #include <stdio.h>
 #include <string.h>
@@ -12,8 +12,8 @@
  * in their own files and link them together or #include them.
  */
 
-/* Prepend each word with numbers 0-9. */
-int append_numbers(char input_file[], char output_file[])
+/* append each word with symbols. */
+int append_symbols(char input_file[], char output_file[])
 {
 	char buf[BUFSIZ];
 	FILE *fp_in;
@@ -36,7 +36,7 @@ int append_numbers(char input_file[], char output_file[])
       /* add digits 0-9 to the end */
       for (i=0; i < 10; i++)
       {
-         buf[index] = i+48;
+         buf[index] = i +66;
          buf[index+1] = '\n';
          buf[index+2] = 0;
 
@@ -44,7 +44,7 @@ int append_numbers(char input_file[], char output_file[])
       }
 
       /* Reset so we are clear when grab next line. */
-		index =0;
+		index = 0;
       clear_buf(buf);
 	}
 
@@ -54,8 +54,8 @@ int append_numbers(char input_file[], char output_file[])
 	return 0;
 }
 
-/* Prepend each word with numbers 0-9. */
-int prepend_numbers(char input_file[], char output_file[])
+/* Prepend each word with symbols. */
+int prepend_symbols(char input_file[], char output_file[])
 {
 	char buf[BUFSIZ];
 	FILE *fp_in;
@@ -103,7 +103,7 @@ int prepend_numbers(char input_file[], char output_file[])
 	return 0;
 }
 
-int concat_with_numbers(char input_file[], char output_file[])
+int concat_with_symbols(char input_file[], char output_file[])
 {
 	
 	char buf[BUFSIZ];

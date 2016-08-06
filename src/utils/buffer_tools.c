@@ -21,3 +21,14 @@ void clear_buf(char buf[])
       buf[i] = 0;
    }
 }
+
+void clear_buf_t(char buf[], int size)
+{
+   int i;
+   i = 0;
+
+   for (i=0; i < size; i++)
+   {
+      buf[i] = 0;
+   }
+}

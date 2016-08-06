@@ -102,7 +102,8 @@ PROGRAMS = $(bin_PROGRAMS)
 am__dirstamp = $(am__leading_dot)dirstamp
 am_pass_gen_OBJECTS = pass_gen.$(OBJEXT) utils/build_input.$(OBJEXT) \
 	utils/buffer_tools.$(OBJEXT) utils/file_tools.$(OBJEXT) \
-	transforms/numbers.$(OBJEXT) transforms/characters.$(OBJEXT)
+	transforms/numbers.$(OBJEXT) transforms/characters.$(OBJEXT) \
+	transforms/symbols.$(OBJEXT)
 pass_gen_OBJECTS = $(am_pass_gen_OBJECTS)
 pass_gen_LDADD = $(LDADD)
 AM_V_P = $(am__v_P_$(V))
@@ -260,7 +261,8 @@ pass_gen_SOURCES = \
 	utils/buffer_tools.c utils/buffer_tools.h \
 	utils/file_tools.c utils/file_tools.h \
 	transforms/numbers.c transforms/numbers.h \
-	transforms/characters.c transforms/characters.h
+	transforms/characters.c transforms/characters.h \
+	transforms/symbols.c transforms/symbols.h
 
 all: all-am
 
@@ -359,6 +361,8 @@ transforms/numbers.$(OBJEXT): transforms/$(am__dirstamp) \
 	transforms/$(DEPDIR)/$(am__dirstamp)
 transforms/characters.$(OBJEXT): transforms/$(am__dirstamp) \
 	transforms/$(DEPDIR)/$(am__dirstamp)
+transforms/symbols.$(OBJEXT): transforms/$(am__dirstamp) \
+	transforms/$(DEPDIR)/$(am__dirstamp)
 
 pass_gen$(EXEEXT): $(pass_gen_OBJECTS) $(pass_gen_DEPENDENCIES) $(EXTRA_pass_gen_DEPENDENCIES) 
 	@rm -f pass_gen$(EXEEXT)
@@ -375,6 +379,7 @@ distclean-compile:
 include ./$(DEPDIR)/pass_gen.Po
 include transforms/$(DEPDIR)/characters.Po
 include transforms/$(DEPDIR)/numbers.Po
+include transforms/$(DEPDIR)/symbols.Po
 include utils/$(DEPDIR)/buffer_tools.Po
 include utils/$(DEPDIR)/build_input.Po
 include utils/$(DEPDIR)/file_tools.Po
