@@ -1,6 +1,12 @@
-- need to add characters transform to handle caps too.
-- need to add the following ascii to symbols transform.
--- ascii
---- 32-47, 58-64, 91-96, 123-126
+- Add characters transform to handle caps too.
+
+- Add the following ascii to symbols transform.
+- Add prepend for symbols
+- Add concat for symbols
+-- ascii: 32-47, 58-64, 91-96, 123-126
 
 - Zip the output files using bzip2
+
+- Add error handling.
+- Add configuration file.
+- Document all code.
