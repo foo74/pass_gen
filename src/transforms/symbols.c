@@ -112,13 +112,34 @@ int prepend_symbols(char input_file[], char output_file[])
 			index--;
 		}
 
+		/* Dont forget the first digit. */
 		buf[index+1] = buf[index];
 
-      /* add digits 0-9 to the end */
-      for (i=0; i < 10; i++)
+      /* add symbols --- asci 32-47 --->(space)!"#$%&'()*+,/ */
+      for (i=32; i < 48; i++)
       {
-         buf[index] = i+48;
+         buf[index] = i;
+			fprintf(fp_out, "%s", buf);
+      }
 
+      /* add symbols --- asci 58-64 ---> :;<=>?@ */
+      for (i=58; i < 65; i++)
+      {
+         buf[index] = i;
+			fprintf(fp_out, "%s", buf);
+      }
+
+      /* add symbols --- asci 91-96 ---> [\]^_` */
+      for (i=91; i < 97; i++)
+      {
+         buf[index] = i;
+			fprintf(fp_out, "%s", buf);
+      }
+
+      /* add symbols --- asci 123-126 ---> {|}~ */
+      for (i=123; i < 127; i++)
+      {
+         buf[index] = i;
 			fprintf(fp_out, "%s", buf);
       }
 
@@ -136,11 +157,11 @@ int prepend_symbols(char input_file[], char output_file[])
 int concat_with_symbols(char input_file[], char output_file[])
 {
 	
-	char buf[BUFSIZ];
+	char buf[100];
 	char combined[BUFSIZ];
 
 	// an array of char pointers, max 100. 
-	char words[BUFSIZ][BUFSIZ];
+	char words[BUFSIZ][100];
 
 	FILE *fp_in;
 	FILE *fp_out;
@@ -151,7 +172,7 @@ int concat_with_symbols(char input_file[], char output_file[])
 	int index = 0;
 
 	/* Make sure the buffer is zero'ed out. */
-	clear_buf(buf);
+	clear_buf_t(buf, 100);
 
 	for (i=0; i<BUFSIZ; i++)
 		words[i][0] = 0;
@@ -166,7 +187,7 @@ int concat_with_symbols(char input_file[], char output_file[])
 		index++;
 
       /* Reset so we are clear when grab next line. */
-      clear_buf(buf);
+      clear_buf_t(buf, 100);
 	}
 
 	/* Now concat all the words together. */
@@ -174,11 +195,42 @@ int concat_with_symbols(char input_file[], char output_file[])
 	{
 		for (j=0; words[j][0] != 0 && j < BUFSIZ; j++)
 		{
-			for (k=0; k<10; k++)
+			/* add symbols --- asci 32-47 --->(space)!"#$%&'()*+,/ */
+			for (k=32; k < 48; k++)
 			{
 				strcpy(combined, words[i]);
 				last = strlen(combined);
-				combined[last-1] = k+48;
+				combined[last-1] = k;
+				strcat(combined, words[j]);
+				fprintf(fp_out, "%s", combined);
+			}
+
+			/* add symbols --- asci 58-64 ---> :;<=>?@ */
+			for (k=58; k < 65; k++)
+			{
+				strcpy(combined, words[i]);
+				last = strlen(combined);
+				combined[last-1] = k;
+				strcat(combined, words[j]);
+				fprintf(fp_out, "%s", combined);
+			}
+
+			/* add symbols --- asci 91-96 ---> [\]^_` */
+			for (k=91; k < 97; k++)
+			{
+				strcpy(combined, words[i]);
+				last = strlen(combined);
+				combined[last-1] = k;
+				strcat(combined, words[j]);
+				fprintf(fp_out, "%s", combined);
+			}
+
+			/* add symbols --- asci 123-126 ---> {|}~ */
+			for (k=123; k < 127; k++)
+			{
+				strcpy(combined, words[i]);
+				last = strlen(combined);
+				combined[last-1] = k;
 				strcat(combined, words[j]);
 				fprintf(fp_out, "%s", combined);
 			}
