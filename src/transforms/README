@@ -23,3 +23,13 @@ TRANSFORMS
 		seperators: [/-_]] 
 		concated: [123, 010203, 01022003]
 		backwards: [321, 030201, 20030201]
+05. Combine Words
+   - Combine words, one two-> onetwo
+   - Combine and cap first words.
+06. Capitalization
+   - Cap first letter of each word.
+   - Cap first letter of eah word and combine words.
+   - Cap first letters of each word and append 01234567, etc..
+   - Append characters after the above transformations.
+   - Cap first letter of each word and then combine, camel case.
+   - 
